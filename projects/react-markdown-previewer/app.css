@@ -3,14 +3,6 @@
 	justify-content: center;
 }
 
-textarea {
-	max-width: 100%;
-	width: 100%;
-	min-height: 250px;
-	box-sizing: border-box;
-	flex-grow: 1;
-}
-
 textarea:focus {
 	outline: none;
 }
@@ -39,6 +31,13 @@ header {
 	max-width: 500px;
 	display: flex;
 	flex-direction: column;
+}
+
+#editor-wrapper > textarea {
+	max-width: 100%;
+	min-height: 250px;
+	box-sizing: border-box;
+	flex-grow: 1;
 }
 
 #preview-wrapper {
