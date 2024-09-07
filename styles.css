@@ -14,7 +14,8 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-size: 16px;
-}
+  line-height: 150%; /* For dyslexic people */
+} 
 
 a {
   text-decoration: none;
@@ -22,6 +23,36 @@ a {
 }
 
 /* Classes */
+
+.command-output-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.command-output {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 64px;
+}
+
+.project {
+  flex-direction: column;
+  max-width: 68ch; /* For dyslexic people */
+  display: flex;
+  gap: 16px;
+}
+
+.long-description {
+  text-align: left;
+}
+
+.project-name:hover {
+  text-decoration: underline;
+}
 
 .pulse-opacity {
   animation: pulseOpacity 1s infinite;
@@ -45,10 +76,13 @@ a {
   color: red;
 }
 
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: orange; }
+.block-cursor {
+  color: var(--background-color);
+  border: 1px var(--text-color) solid;
+  background-color: var(--background-color);
 }
+
+/* Keyframes */
 
 @keyframes pulseOpacity {
   0% {
