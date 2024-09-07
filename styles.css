@@ -1,6 +1,7 @@
 :root {
   --background-color: #000000;
   --text-color: #28fe14;
+  --screaming-color: #b0422a;
 }
 
 /* Elements */
@@ -22,6 +23,15 @@ a {
   color: inherit;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
+th, td {
+  padding-right: 32px;
+  padding-left: 32px;
+}
+
 /* Classes */
 
 .command-output-wrapper {
@@ -35,19 +45,20 @@ a {
 .command-output {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  gap: 64px;
+  max-width: 68ch; /* For dyslexic people */
+  gap: 16px;
 }
 
-.project {
-  flex-direction: column;
-  max-width: 68ch; /* For dyslexic people */
-  display: flex;
-  gap: 16px;
+.short-description {
+  text-align: center;
 }
 
 .long-description {
   text-align: left;
+}
+
+.project-name-wrapper {
+  text-align: center;
 }
 
 .project-name:hover {
@@ -64,6 +75,7 @@ a {
 
 .file {
   display: block;
+  text-decoration: none !important;
 }
 
 .file:hover {
@@ -73,13 +85,18 @@ a {
 
 .removable-text:hover {
   text-decoration: line-through;
-  color: red;
+  color: var(--screaming-color);
 }
 
 .block-cursor {
   color: var(--background-color);
   border: 1px var(--text-color) solid;
   background-color: var(--background-color);
+}
+
+.text-highlight {
+  color: var(--screaming-color);
+  font-weight: bold;
 }
 
 /* Keyframes */
