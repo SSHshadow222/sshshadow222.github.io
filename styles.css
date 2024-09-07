@@ -1,0 +1,114 @@
+:root {
+  --background-color: #000000;
+  --text-color: #28fe14;
+  --screaming-color: #b0422a;
+}
+
+/* Elements */
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Source Code Pro', monospace; /* The font I would've used is called "SF Mono" */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 150%; /* For dyslexic people */
+} 
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+th, td {
+  padding-right: 32px;
+  padding-left: 32px;
+}
+
+/* Classes */
+
+.command-output-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.command-output {
+  display: flex;
+  flex-direction: column;
+  max-width: 68ch; /* For dyslexic people */
+  gap: 16px;
+}
+
+.short-description {
+  text-align: center;
+}
+
+.long-description {
+  text-align: left;
+}
+
+.project-name-wrapper {
+  text-align: center;
+}
+
+.project-name:hover {
+  text-decoration: underline;
+}
+
+.pulse-opacity {
+  animation: pulseOpacity 1s infinite;
+}
+
+.pulse-opacity:hover {
+  animation: none;
+}
+
+.file {
+  display: block;
+  text-decoration: none !important;
+}
+
+.file:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.removable-text:hover {
+  text-decoration: line-through;
+  color: var(--screaming-color);
+}
+
+.block-cursor {
+  color: var(--background-color);
+  border: 1px var(--text-color) solid;
+  background-color: var(--background-color);
+}
+
+.text-highlight {
+  color: var(--screaming-color);
+  font-weight: bold;
+}
+
+/* Keyframes */
+
+@keyframes pulseOpacity {
+  0% {
+    opacity: 1;;
+  }
+  50% {
+    opacity: 0.5;;
+  }
+  100% {
+    opacity: 1;
+  }
+}
