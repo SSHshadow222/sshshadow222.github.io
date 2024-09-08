@@ -10,13 +10,39 @@
 
     <link rel="stylesheet" href="css/styles.css">
   </head>
-  <body>
+  <body style="visibility: hidden;">
     <p>user@shadow2die ~ % clear</p>
-    <p>user@shadow2die ~ % cat ./</p>
-    <div class="pulse-opacity">
-      <a href="html/contact.html" class="file">contact-info.csv</a>
-      <a href="html/projects.html" class="file">my-projects.txt</a>
-      <a href="html/about.html" class="file">about-me-draft</a>
+    <p>user@shadow2die ~ % <span class="command">cat ./</span></p>
+    <div id="files-wrapper" class="pulse-opacity">
+      <a href="html/contact.html" class="selectable">contact-info.csv</a>
+      <a href="html/projects.html" class="selectable">my-projects.txt</a>
+      <a href="html/about.html" class="selectable">about-me-draft</a>
     </div>
+    <script type="module">
+      import { typewriteTextInElement } from './js/utils.js';
+
+      const body = document.getElementsByTagName('body')[0];
+
+      body.style.visibility = 'visible';
+
+      const commandSpan = document.getElementsByClassName('command')[0];
+      const commandSpanText = commandSpan.textContent;
+
+      commandSpan.textContent = '';
+
+      const filesWrapper = document.getElementById('files-wrapper');
+
+      filesWrapper.style.display = 'none';
+
+      typewriteTextInElement(
+        commandSpanText, 
+        commandSpan, 
+        () => { 
+          setTimeout(() => {
+            filesWrapper.style.display = 'block';
+          }, 125);
+        }
+      );
+    </script>
   </body>
 </html>

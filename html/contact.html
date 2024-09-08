@@ -10,10 +10,11 @@
 
     <link rel="stylesheet" href="../css/styles.css">
   </head>
-  <body>
-    <p>user@shadow2die ~ % cat ./<a class="removable-text pulse-opacity" href="../index.html">contact-info.csv | sed "s/,/\t/"</a></p>
-    <div class="command-output-wrapper">
-      <div class="command-output">
+  <body style="visibility: hidden;">
+    <p>user@shadow2die ~ % clear</p>
+    <p>user@shadow2die ~ % <span class="command">cat ./contact-info.csv | sed "s/,/\t/"<span></p>
+    <div id="command-output-wrapper">
+      <div id="command-output">
         <table>
           <tr>
             <td>Property</td>
@@ -33,51 +34,75 @@
           </tr>
           <tr>
             <td>LinkedIn</td>
-            <td>
-              <a href="https://www.linkedin.com/in/vlad-antoniu-ghenghiu-527371195"
-                target="_blank">
-                in/vlad-antoniu-ghenghiu-527371195
-              </a>
-            </td>
+            <td><a href="https://www.linkedin.com/in/vlad-antoniu-ghenghiu-527371195" target="_blank">in/vlad-antoniu-ghenghiu-527371195</a></td>
           </tr>
           <tr>
             <td>GitHub</td>
-            <td>
-              <a href="https://github.com/SSHshadow222"
-                target="_blank">
-                SSHshadow222
-              </a>
-            </td>
+            <td><a href="https://github.com/SSHshadow222" target="_blank">SSHshadow222</a></td>
           <tr>
             <td>LeetCode</td>
-            <td>
-              <a href="https://leetcode.com/u/SSHshadow2222"
+            <td><a href="https://leetcode.com/u/SSHshadow2222"
                 target="_blank">
-                u/SSHshadow2222
-              </a>
-            </td>
+                u/SSHshadow2222</a></td>
           </tr>
           <tr>
             <td>CodePen</td>
-            <td>
-              <a href="https://codepen.com/SSHshadow222"
-                target="_blank">
-                SSHshadow222
-              </a>
-            </td>
+            <td><a href="https://codepen.com/SSHshadow222" target="_blank">SSHshadow222</a></td>
           </tr>
           <tr>
             <td>X</td>
-            <td>
-              <a href="https://x.com/SSHshadow2222"
-                target="_blank">
-                SSHshadow2222
-              </a>
-            </td>
+            <td><a href="https://x.com/SSHshadow2222" target="_blank">SSHshadow2222</a></td>
+          </tr>
+          <tr>
+            <td>Stack Overflow</td>
+            <td><a href="https://stackoverflow.com/users/20763617/shadow" target="_black">users/20763617/shadow</a></td>
           </tr>
         </table>
       </div>
     </div>
-    <p>user@shadow2die ~ % <span class="block-cursor">_</span></p>
+    <a href="../index.html" class="selectable">user@shadow2die ~ % <span class="command">clear</span><span id="block-cursor">_</span></a>
+    <script type="module">
+      import { typewriteTextInElement } from '../js/utils.js';
+
+      const body = document.getElementsByTagName('body')[0];
+
+      body.style.visibility = 'visible';
+
+      const [commandSpan1, commandSpan2] = document.getElementsByClassName('command');
+      const commandSpan2Text = commandSpan2.textContent;
+      const commandSpan1Text = commandSpan1.textContent;
+      
+      commandSpan1.textContent = commandSpan1Text.substring(0, 6);
+      commandSpan2.textContent = '';
+      
+      const commandOutputWrapper = document.getElementById('command-output-wrapper');
+      const blockCursor = document.getElementById('block-cursor');
+      
+      commandSpan2.parentElement.style.display = 'none';
+      commandOutputWrapper.style.display = 'none';
+      commandSpan2.style.display = 'none';
+      blockCursor.style.display = 'none';
+
+      typewriteTextInElement(
+        commandSpan1Text,
+        commandSpan1,
+        () => { 
+          setTimeout(() => {
+            commandOutputWrapper.style.display = 'flex';
+            commandSpan2.parentElement.style.display = 'block';
+            commandSpan2.style.display = 'inline';
+
+            typewriteTextInElement(
+              commandSpan2Text,
+              commandSpan2,
+              () => {
+                  blockCursor.style.display = 'inline';
+              }
+            );
+          }, 125);
+        },
+        7
+      );
+    </script>
   </body>
 </html>

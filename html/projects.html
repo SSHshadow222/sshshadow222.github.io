@@ -10,10 +10,11 @@
     
     <link rel="stylesheet" href="../css/styles.css">
   </head>
-  <body>
-    <p>user@shadow2die ~ % cat ./<a class="removable-text pulse-opacity" href="../index.html">my-projects.txt</a></p>
-    <div class="command-output-wrapper">
-      <div class="command-output">
+  <body style="visibility: hidden;">
+    <p>user@shadow2die ~ % clear</p>
+    <p>user@shadow2die ~ % <span class="command">cat ./my-projects.txt</span></p>
+    <div id="command-output-wrapper">
+      <div id="command-output">
         <p class="project-name-wrapper">
           <a href="https://play.google.com/store/apps/details?id=com.sshshadow222.notetracker"
             target="_blank"
@@ -36,6 +37,47 @@
         </p>
       </div>
     </div>
-    <p>user@shadow2die ~ % <span class="block-cursor">_</span></p>
+    <a href="../index.html" class="selectable">user@shadow2die ~ % <span class="command">clear</span><span id="block-cursor">_</span></a>
+    <script type="module">
+      import { typewriteTextInElement } from '../js/utils.js';
+
+      const body = document.getElementsByTagName('body')[0];
+
+      body.style.visibility = 'visible';
+
+      const [commandSpan1, commandSpan2] = document.getElementsByClassName('command');
+      const commandSpan1Text = commandSpan1.textContent;
+      const commandSpan2Text = commandSpan2.textContent;
+
+      commandSpan1.textContent = commandSpan1Text.substring(0, 6);
+      commandSpan2.textContent = '';
+
+      const commandOutputWrapper = document.getElementById('command-output-wrapper');
+      const blockCursor = document.getElementById('block-cursor');
+
+      commandSpan2.parentElement.style.display = 'none';
+      commandOutputWrapper.style.display = 'none';
+      blockCursor.style.display = 'none';
+
+      typewriteTextInElement(
+        commandSpan1Text,
+        commandSpan1,
+        () => {
+          setTimeout(() => {
+            commandOutputWrapper.style.display = 'flex';
+            commandSpan2.parentElement.style.display = 'block';
+
+            typewriteTextInElement(
+              commandSpan2Text,
+              commandSpan2,
+              () => {
+                blockCursor.style.display = 'inline';
+              }
+            );
+          }, 125);
+        },
+        7
+      );
+    </script>
   </body>
 </html>
