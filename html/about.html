@@ -12,7 +12,7 @@
   </head>
   <body style="visibility: hidden;">
     <p>user@shadow2die ~ % clear</p>
-    <p>user@shadow2die ~ % <span class="command">cat ./about-me-draft | grep -n "no bullshit" --color=auto</span</p>
+    <p>user@shadow2die ~ % <span class="command">cat ./about-me-draft | grep -n "no bullshit" --color=auto</span></p>
     <div id="command-output-wrapper">
       <div id="command-output">
         <p>
@@ -24,7 +24,7 @@
         </p>
       </div>
     </div>
-    <a href="../index.html" class="selectable">user@shadow2die ~ % <span class="command">clear</span><span id="block-cursor">_</span></p>
+    <a href="../index.html" class="selectable">user@shadow2die ~ % <span class="command">clear</span></a>
     <script type="module">
       import { typewriteTextInElement } from '../js/utils.js';
 
@@ -39,12 +39,16 @@
       commandSpan1.textContent = commandSpan1Text.substring(0, 6);
       commandSpan2.textContent = '';
 
+      const blockCursor = document.createElement('span');
+
+      blockCursor.id = "block-cursor";
+      blockCursor.textContent = '_';
+      commandSpan1.parentElement.appendChild(blockCursor);
+
       const commandOutputWrapper = document.getElementById('command-output-wrapper');
-      const blockCursor = document.getElementById('block-cursor');
 
       commandSpan2.parentElement.style.display = 'none';
       commandOutputWrapper.style.display = 'none';
-      blockCursor.style.display = 'none';
 
       typewriteTextInElement(
         commandSpan1Text,
@@ -53,13 +57,13 @@
           setTimeout(() => {
             commandOutputWrapper.style.display = 'flex';
             commandSpan2.parentElement.style.display = 'block';
+            commandSpan2.parentElement.appendChild(blockCursor);
 
             typewriteTextInElement(
               commandSpan2Text,
               commandSpan2,
               () => {
-                blockCursor.style.display = 'inline';
-                commandSpan2.parentElement.className = 'selectable';
+                blockCursor.className = 'blinking';
               }
             );
           }, 125);

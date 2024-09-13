@@ -35,9 +35,9 @@ th, td {
 /* IDs */
 
 #block-cursor {
-  color: var(--background-color);
+  color: var(--text-color);
   border: 1px var(--text-color) solid;
-  background-color: var(--background-color);
+  background-color: var(--text-color);
 }
 
 #command-output-wrapper {
@@ -56,6 +56,10 @@ th, td {
 }
 
 /* Classes */
+
+.blinking {
+  animation: blink 1s steps(1) infinite;
+}
 
 .short-description {
   text-align: center;
@@ -113,5 +117,11 @@ th, td {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }

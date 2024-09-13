@@ -60,7 +60,7 @@
         </table>
       </div>
     </div>
-    <a href="../index.html" class="selectable">user@shadow2die ~ % <span class="command">clear</span><span id="block-cursor">_</span></a>
+    <a href="../index.html" class="selectable">user@shadow2die ~ % <span class="command">clear</span></a>
     <script type="module">
       import { typewriteTextInElement } from '../js/utils.js';
 
@@ -74,14 +74,18 @@
       
       commandSpan1.textContent = commandSpan1Text.substring(0, 6);
       commandSpan2.textContent = '';
-      
+
+      const blockCursor = document.createElement('span');
+
+      blockCursor.id = "block-cursor";
+      blockCursor.textContent = '_';
+      commandSpan1.parentElement.appendChild(blockCursor);
+
       const commandOutputWrapper = document.getElementById('command-output-wrapper');
-      const blockCursor = document.getElementById('block-cursor');
-      
+
       commandSpan2.parentElement.style.display = 'none';
       commandOutputWrapper.style.display = 'none';
       commandSpan2.style.display = 'none';
-      blockCursor.style.display = 'none';
 
       typewriteTextInElement(
         commandSpan1Text,
@@ -90,13 +94,14 @@
           setTimeout(() => {
             commandOutputWrapper.style.display = 'flex';
             commandSpan2.parentElement.style.display = 'block';
+            commandSpan2.parentElement.appendChild(blockCursor);
             commandSpan2.style.display = 'inline';
 
             typewriteTextInElement(
               commandSpan2Text,
               commandSpan2,
               () => {
-                  blockCursor.style.display = 'inline';
+                blockCursor.className = "blinking";
               }
             );
           }, 125);

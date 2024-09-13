@@ -30,6 +30,13 @@
 
       commandSpan.textContent = '';
 
+      const commandWrapper = commandSpan.parentElement;
+      const blockCursor = document.createElement('span');
+
+      blockCursor.id = "block-cursor";
+      blockCursor.textContent = "_";
+      commandWrapper.appendChild(blockCursor);
+
       const filesWrapper = document.getElementById('files-wrapper');
 
       filesWrapper.style.display = 'none';
@@ -40,6 +47,7 @@
         () => { 
           setTimeout(() => {
             filesWrapper.style.display = 'block';
+            blockCursor.className = "blinking"
           }, 125);
         }
       );
