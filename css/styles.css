@@ -39,6 +39,8 @@ th, td {
   justify-content: center;
   align-items: center;
   position: absolute;
+  text-align: center;
+  line-height: 150%; /* For dyslexic people */
   font-size: 32px;
   display: flex;
   z-index: 1;
