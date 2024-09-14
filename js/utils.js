@@ -9,7 +9,6 @@
  */
 export function typewriteTextInElement(text, element, callback = () => {}, startIndex = 0, duration = 500) {
   let characterWritten = startIndex;
-  
   const interval = setInterval(() => {
     element.textContent = text.substring(0, characterWritten++);
 

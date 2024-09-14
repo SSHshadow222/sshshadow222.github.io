@@ -13,7 +13,7 @@
   <body style="visibility: hidden;">
     <p>user@shadow2die ~ % clear</p>
     <p>user@shadow2die ~ % <span class="command">cat ./</span></p>
-    <div id="files-wrapper" class="pulse-opacity">
+    <div id="files-wrapper">
       <a href="html/contact.html" class="selectable">contact-info.csv</a>
       <a href="html/projects.html" class="selectable">my-projects.txt</a>
       <a href="html/about.html" class="selectable">about-me-draft</a>
@@ -25,32 +25,63 @@
 
       body.style.visibility = 'visible';
 
-      const commandSpan = document.getElementsByClassName('command')[0];
-      const commandSpanText = commandSpan.textContent;
+      const isShowingWelcomeContent = sessionStorage.getItem("isNotShowingWelcomeContent") == null;
 
-      commandSpan.textContent = '';
+      if (isShowingWelcomeContent) {
+        const welcomeContentWrapper = document.createElement('div');
+        const welcomeContentWrapperText = ">ssh -p 2222 user@shadow2die";
+        
+        welcomeContentWrapper.id = 'welcome-content-wrapper';
+        welcomeContentWrapper.textContent = ">";
 
-      const commandWrapper = commandSpan.parentElement;
-      const blockCursor = document.createElement('span');
+        body.appendChild(welcomeContentWrapper);
 
-      blockCursor.id = "block-cursor";
-      blockCursor.textContent = "_";
-      commandWrapper.appendChild(blockCursor);
+        typewriteTextInElement(
+          welcomeContentWrapperText,
+          welcomeContentWrapper,
+          () => {
+            setTimeout(() => {
+              welcomeContentWrapper.className = "fade-out";
+              sessionStorage.setItem('isNotShowingWelcomeContent', true);
+              
+              handleMainContentDisplay();
+            }, 1000);
+          },
+          1,
+          1000
+        );
+      } else {
+        handleMainContentDisplay();
+      }
 
-      const filesWrapper = document.getElementById('files-wrapper');
+      function handleMainContentDisplay() {
+        const commandSpan = document.getElementsByClassName('command')[0];
+        const commandSpanText = commandSpan.textContent;
 
-      filesWrapper.style.display = 'none';
+        commandSpan.textContent = '';
 
-      typewriteTextInElement(
-        commandSpanText, 
-        commandSpan, 
-        () => { 
-          setTimeout(() => {
-            filesWrapper.style.display = 'block';
-            blockCursor.className = "blinking"
-          }, 125);
-        }
-      );
+        const commandWrapper = commandSpan.parentElement;
+        const blockCursor = document.createElement('span');
+
+        blockCursor.id = "block-cursor";
+        blockCursor.textContent = "_";
+        commandWrapper.appendChild(blockCursor);
+
+        const filesWrapper = document.getElementById('files-wrapper');
+
+        filesWrapper.style.display = 'none';
+
+        typewriteTextInElement(
+          commandSpanText, 
+          commandSpan, 
+          () => { 
+            setTimeout(() => {
+              filesWrapper.style.display = 'block';
+              blockCursor.className = "blinking"
+            }, 125);
+          }
+        );
+      }
     </script>
   </body>
 </html>
