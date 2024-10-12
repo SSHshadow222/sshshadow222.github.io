@@ -32,6 +32,10 @@ th, td {
   padding-left: 32px;
 }
 
+li {
+  max-width: 68ch; /* For dyslexic people */
+}
+
 /* IDs */
 
 #welcome-content-wrapper {
