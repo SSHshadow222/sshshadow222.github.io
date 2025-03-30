@@ -160,6 +160,6 @@ li {
 @keyframes fadeOut {
   to {
     opacity: 0;
-    display: none;
+    visibility: hidden;
   }
 }
