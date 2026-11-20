@@ -1,7 +1,8 @@
 :root {
   --background-color: #000000;
-  --foreground-color: #28fe14;
+  --foreground-color: #28FE14;
   --highlight-color: #FF7759;
+  --secondary-color: #FF00FF;
 }
 
 /* Elements */
