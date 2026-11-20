@@ -30,7 +30,7 @@
       if (isShowingWelcomeContent) {
         const welcomeContentWrapper = document.createElement('div');
         const welcomeContentWrapperText = ">ssh -p 2222 user@shadow2die";
-        
+
         welcomeContentWrapper.id = 'welcome-content-wrapper';
         welcomeContentWrapper.textContent = ">";
 
@@ -43,7 +43,7 @@
             setTimeout(() => {
               welcomeContentWrapper.className = "fade-out";
               sessionStorage.setItem('isNotShowingWelcomeContent', true);
-              
+
               handleMainContentDisplay();
             }, 1000);
           },
@@ -74,7 +74,7 @@
         typewriteTextInElement(
           commandSpanText, 
           commandSpan, 
-          () => { 
+          () => {
             setTimeout(() => {
               filesWrapper.style.display = 'block';
               blockCursor.className = "blinking"
