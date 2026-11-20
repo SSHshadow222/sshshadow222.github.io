@@ -1,7 +1,7 @@
 :root {
   --background-color: #000000;
-  --text-color: #28fe14;
-  --screaming-color: #FF7759;
+  --foreground-color: #28fe14;
+  --highlight-color: #FF7759;
 }
 
 /* Elements */
@@ -13,7 +13,7 @@
 body {
   font-family: 'Source Code Pro', monospace; /* The font I would've used is called "SF Mono" */
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--foreground-color);
   font-size: 16px;
   line-height: 150%; /* For dyslexic people */
 } 
@@ -66,9 +66,9 @@ li {
 }
 
 #block-cursor {
-  color: var(--text-color);
-  border: 1px var(--text-color) solid;
-  background-color: var(--text-color);
+  color: var(--foreground-color);
+  border: 1px var(--foreground-color) solid;
+  background-color: var(--foreground-color);
 }
 
 #command-output-wrapper {
@@ -122,7 +122,7 @@ li {
 }
 
 .selectable:hover {
-  background-color: var(--text-color);
+  background-color: var(--foreground-color);
   color: var(--background-color);
 }
 
@@ -133,7 +133,7 @@ li {
 }
 
 .text-highlight {
-  color: var(--screaming-color);
+  color: var(--highlight-color);
   font-weight: bold;
 }
 
