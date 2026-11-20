@@ -43,6 +43,12 @@ li {
 
 /* IDs */
 
+#gustav {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+}
+
 #welcome-content-wrapper {
   background-color: var(--background-color);
   justify-content: center;
