@@ -25,7 +25,32 @@
     <script type="module">
       import { typewriteTextInElement } from './js/utils.js';
 
+      const root = document.documentElement;
       const body = document.getElementsByTagName('body')[0];
+      const gustav = document.getElementById('gustav');
+
+      gustav.addEventListener('click', () => {
+        const styles = getComputedStyle(root);
+
+        const primary = localStorage.getItem('primary-color')
+            || styles.getPropertyValue('--primary-color');
+
+        const secondary = localStorage.getItem('secondary-color')
+            || styles.getPropertyValue('--secondary-color');
+
+        root.style.setProperty('--primary-color', secondary);
+        root.style.setProperty('--secondary-color', primary);
+
+        localStorage.setItem('primary-color', secondary);
+        localStorage.setItem('secondary-color', primary);
+      });
+
+      const style = getComputedStyle(root);
+      const primary = localStorage.getItem('primary-color');
+      const secondary = localStorage.getItem('secondary-color');
+
+      primary && root.style.setProperty('--primary-color', primary);
+      secondary && root.style.setProperty('--secondary-color', secondary);
 
       body.style.visibility = 'visible';
 
