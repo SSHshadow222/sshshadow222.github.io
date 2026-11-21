@@ -6,51 +6,25 @@
 
     <!--  This icon was created by Dhanish -->
     <!--  Here's his X profile: https://x.com/dhanishgajjar -->
-    <link rel="icon" href="icons/dracula.ico" type="image/x-icon">
+    <link rel="icon" href="/assests/icons/dracula.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/styles.css">
+
+    <script src="/js/main.js" type="module"></script>
   </head>
   <body style="visibility: hidden;">
-    <pre id="gustav">       ------|\/|
-     /   ___ |__|
-\___/ |_/   \_|
-</pre>
+    <custom-gustav></custom-gustav>
     <p>user@shadow2die ~ % clear</p>
     <p>user@shadow2die ~ % <span class="command">cat ./</span></p>
     <div id="files-wrapper">
-      <a href="html/contact.html" class="selectable">contact-info.csv</a>
-      <a href="html/projects.html" class="selectable">my-projects.txt</a>
-      <a href="html/about.html" class="selectable">about-me-draft</a>
+      <a href="/pages/contact.html" class="selectable">contact-info.csv</a>
+      <a href="/pages/projects/" class="selectable">my-projects.txt</a>
+      <a href="/pages/about.html" class="selectable">about-me-draft</a>
     </div>
     <script type="module">
-      import { typewriteTextInElement } from './js/utils.js';
+      import { typewriteTextInElement } from '/js/utils.js';
 
-      const root = document.documentElement;
       const body = document.getElementsByTagName('body')[0];
-      const gustav = document.getElementById('gustav');
-
-      gustav.addEventListener('click', () => {
-        const styles = getComputedStyle(root);
-
-        const primary = localStorage.getItem('primary-color')
-            || styles.getPropertyValue('--primary-color');
-
-        const secondary = localStorage.getItem('secondary-color')
-            || styles.getPropertyValue('--secondary-color');
-
-        root.style.setProperty('--primary-color', secondary);
-        root.style.setProperty('--secondary-color', primary);
-
-        localStorage.setItem('primary-color', secondary);
-        localStorage.setItem('secondary-color', primary);
-      });
-
-      const style = getComputedStyle(root);
-      const primary = localStorage.getItem('primary-color');
-      const secondary = localStorage.getItem('secondary-color');
-
-      primary && root.style.setProperty('--primary-color', primary);
-      secondary && root.style.setProperty('--secondary-color', secondary);
 
       body.style.visibility = 'visible';
 
