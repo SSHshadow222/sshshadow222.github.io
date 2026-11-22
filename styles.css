@@ -48,14 +48,10 @@ li {
   position: fixed;
   bottom: 32px;
   right: 32px;
-  color: var(--primary-color);
 }
 
 #gustav:hover {
   transform: scaleX(-1);
-  background-color: var(--primary-color);
-  color: var(--background-color);
-  cursor: pointer;
 }
 
 #welcome-content-wrapper {
@@ -101,22 +97,6 @@ li {
   animation: blink 1s steps(1) infinite;
 }
 
-.short-description {
-  text-align: center;
-}
-
-.long-description {
-  text-align: left;
-}
-
-.project-name-wrapper {
-  text-align: center;
-}
-
-.project-name:hover {
-  text-decoration: underline;
-}
-
 .pulse-opacity {
   animation: pulseOpacity 1s infinite;
 }
@@ -125,17 +105,19 @@ li {
   animation: none;
 }
 
-.selectable {
+.clickable {
   display: block;
+  cursor: pointer;
+  user-select: none;
   text-decoration: none !important;
 }
 
-.selectable:hover {
+.clickable:hover {
   background-color: var(--primary-color);
   color: var(--background-color);
 }
 
-.selectable:hover > #block-cursor {
+.clickable:hover > #block-cursor {
   background-color: var(--background-color);
   border-color: var(--background-color);
   color: var(--background-color);
