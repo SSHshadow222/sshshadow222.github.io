@@ -110,6 +110,7 @@ li {
   cursor: pointer;
   user-select: none;
   text-decoration: none !important;
+  font-weight: bold;
 }
 
 .clickable:hover {
